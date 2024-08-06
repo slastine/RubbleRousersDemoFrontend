@@ -1,0 +1,11 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <app-parent-display (parentsSelected)="onParentsSelected($event)"></app-parent-display>
+    </div>
+    <div class="col-4 mt-5">
+      <app-kitten-grid [kittens]="kittens" [kittenSilvers]="kittenSilvers" [kittenGolds]="kittenGolds" [kittenGenders]="kittenGenders" [kittenTabbies]="kittenTabbies" [kittenAmbers]="kittenAmbers" [kittenRs]="kittenRs"></app-kitten-grid>
+    </div>
+  </div>
+</div>

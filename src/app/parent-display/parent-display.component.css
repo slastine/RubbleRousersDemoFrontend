@@ -1,0 +1,119 @@
+/* In your CSS file (e.g., parent-display.component.css) */
+.silver {
+  filter: saturate(var(--saturate-value)) brightness(var(--brightness-value)) contrast(var(--contrast-value));
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.darken {
+  filter: brightness(90%);
+}
+
+.contrast {
+}
+.Mackerel {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Mackeral.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Mackeral.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+.classic {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Classic.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Classic.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+.ticked {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/GoldenTicked.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/GoldenTicked.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+.heteroTicked {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/HeteroTicked.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/HeteroTicked.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+.spotted {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Spotted.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Spotted.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+.broken {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Broken.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Broken.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: brightness(70%);
+}
+
+
+
+.smoke {
+  -webkit-mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Smoke.png);
+  mask-image: url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Smoke.png);
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  mix-blend-mode: normal;
+  mask-position: 25%;
+  filter: saturate(var(--saturate-value)) brightness(var(--brightness-value)) contrast(var(--contrast-value));
+}
+
+
+

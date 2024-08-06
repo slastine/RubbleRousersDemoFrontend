@@ -1,0 +1,211 @@
+<div class="justify-content-center" style="text-align: center">
+  <button class="btn btn-info" (click)="onSubmit()">Breed Cats</button>
+</div>
+
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <h2>Male Parent</h2>
+        <app-cat-design (dropdownChange)="onDropdownChange($event, 'parent1')" (silverSliderChange)="onSilverSliderChange($event,'parent1')" (goldenSliderChange)="onGoldenSliderChange($event,'parent1')" (amberSliderChange)="onAmberSliderChange($event, 'parent1')" (rSliderChange)="onRSliderChange($event, 'parent1')"></app-cat-design>
+      </div>
+      <div class="col-9">
+
+        <div style="position: relative; width: 50%; height: auto;">
+          <img [src]="parent1ImageUrl[0]"
+               alt="Parent 1 Image"
+               style="width: 100%; height: auto; position: absolute;"
+               [ngClass]="{
+    darken: parent1Data['Tabby'] !== 'Tabby',
+    contrast: parent1Data['Tabby'] !== 'Tabby',
+    brown: parent1Data['Bases'] === 'Black'
+  }" />
+
+          <img *ngIf="parent1Data['Bases'] === 'Black' && parent1Data['Tabby'] == 'Tabby'"
+               [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Chocolate.png'"
+               alt="Parent 2 Image"
+               style="width: 100%; height: auto; position: absolute; mix-blend-mode: screen" />
+
+          <img *ngIf="parent1ImageUrl[7] != '' && parent1Data['Bases'] !== 'White' && parent1Data['Bases'] !== 'Red'&&  parent1Data['Bases'] !== 'Cream' && parent1Data['Bases'] !== 'Apricot'" [src]="parent1ImageUrl[7]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute;" [ngClass]="{'darken': parent1Data['Tabby'] !== 'Tabby'}" [style.opacity]="parent1AmberSliderValue + '%'" />
+          <img *ngIf="parent1Data['Bases'] !== 'White'"
+               [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'" alt="Parent 2 Image"
+               style="width: 100%; height: auto; position: absolute; filter:brightness(110%)"
+               [ngClass]="{ 'darken': parent1Data['Tabby'] !== 'Tabby' }"
+               [style.opacity]="parent1RSliderValue + '%'" />
+          <div *ngIf="parent1ImageUrl.length > 1">
+            <img *ngIf="parent1ImageUrl[2].includes('Overlays')" [src]="parent1ImageUrl[2] !== '' ? parent1ImageUrl[2] : parent1ImageUrl[0]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;"
+                 [style.opacity]="(parent1GoldenSliderValue - parent1SilverSliderValue) + '%'"
+                 [style.filter]="'saturate(' + (goldenSaturation1) + '%) '" />
+            <img class="silver"
+                 [src]="parent1ImageUrl[0]"
+                 [ngClass]="{
+       'ticked': parent1Data['Ticked'] === 'Ticked' && parent1Data['Tabby'] == 'Tabby',
+       'heteroTicked': parent1Data['Ticked'] === 'Heterozygous Ticked',
+       'spotted': parent1Data['Spotted'] === 'Spotted' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Ticked'] !== 'Ticked'&& parent1Data['Tabby'] == 'Tabby',
+       'Mackerel': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Spotted'] !== 'Spotted' && parent1Data['Tabby'] == 'Tabby',
+       'classic': parent1Data['Mackerel'] === 'Classic' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby',
+        'broken': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Spotted'] === 'Partial' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby'
+     }"
+                 [style.opacity]="brokenOpacity1" />
+            <img *ngIf="parent1ImageUrl[7] != '' && parent1Data['Bases'] !== 'White' && parent1Data['Bases'] !== 'Red'&&  parent1Data['Bases'] !== 'Cream' && parent1Data['Bases'] !== 'Apricot'" class="silver"
+                 [src]="parent1ImageUrl[0]"
+                 [ngClass]="{
+  'ticked': parent1Data['Ticked'] === 'Ticked' && parent1Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent1Data['Ticked'] === 'Heterozygous Ticked',
+  'spotted': parent1Data['Spotted'] === 'Spotted' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Ticked'] !== 'Ticked'&& parent1Data['Tabby'] == 'Tabby',
+  'Mackerel': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Spotted'] !== 'Spotted' && parent1Data['Tabby'] == 'Tabby',
+  'classic': parent1Data['Mackerel'] === 'Classic' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby',
+   'broken': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Spotted'] === 'Partial' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby'
+}"
+                 [style.opacity]="brokenOpacity1 * (parent1AmberSliderValue / 100)" />
+
+            <img class="silver" *ngIf="parent1ImageUrl[1].includes('Overlays')" [src]="parent1ImageUrl[1]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;"
+                 [style.opacity]="parent1SilverSliderValue + '%'"
+                 [style.--saturate-value.%]="saturateValue1"
+                 [style.--brightness-value.%]="brightnessValue1"
+                 [style.--contrast-value.%]="contrastValue1"
+                 [ngClass]="{'smoke': parent1Data['Tabby'] !== 'Tabby'}">
+            <img *ngIf="parent1ImageUrl[5].includes('Overlays')" [src]="parent1ImageUrl[5]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;" [style.opacity]="whiteUnderbelly1">
+            <img *ngIf="parent1Data['Tabby'] == 'Tabby'" [src]="parent1ImageUrl[0]" [ngClass]="{
+  'ticked': parent1Data['Ticked'] === 'Ticked'  && parent1Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent1Data['Ticked'] === 'Heterozygous Ticked'  && parent1Data['Tabby'] == 'Tabby',
+  'spotted': parent1Data['Spotted'] === 'Spotted' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Ticked'] !== 'Ticked'  && parent1Data['Tabby'] == 'Tabby',
+  'Mackerel': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Spotted'] !== 'Spotted'  && parent1Data['Tabby'] == 'Tabby',
+  'classic': parent1Data['Mackerel'] === 'Classic' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked'  && parent1Data['Tabby'] == 'Tabby',
+   'broken': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Spotted'] === 'Partial' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby'
+
+}" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal; filter:brightness(70%); mask-size: cover" [style.opacity]="tickedOpacity1">
+            <img *ngIf="parent1Data['Bases'] !== 'White' && (parent1Data['Bases'] === 'Red' || parent1Data['Bases'] === 'Cream' || parent1Data['Bases'] === 'Apricot')"
+                 [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'" alt="Parent 2 Image"
+                 style="width: 100%; height: auto; position: absolute; filter: brightness(90%)"
+                 [ngClass]="{
+  'ticked': parent1Data['Ticked'] === 'Ticked' && parent1Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent1Data['Ticked'] === 'Heterozygous Ticked',
+  'spotted': parent1Data['Spotted'] === 'Spotted' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Tabby'] == 'Tabby',
+  'Mackerel': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Spotted'] !== 'Spotted' && parent1Data['Tabby'] == 'Tabby',
+  'classic': parent1Data['Mackerel'] === 'Classic' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby',
+  'broken': parent1Data['Mackerel'] === 'Mackerel' && parent1Data['Spotted'] === 'Partial' && parent1Data['Ticked'] !== 'Ticked' && parent1Data['Ticked'] !== 'Heterozygous Ticked' && parent1Data['Tabby'] == 'Tabby'
+
+}"
+                 [style.opacity]="parent2RSliderValue + '%'" />
+            <img class="silver" *ngIf="parent1ImageUrl[6] != ''" [src]="parent1ImageUrl[6]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+            <img class="silver" *ngIf="parent1Data['Bases'] === 'White'" [src]="parent1ImageUrl[0]" alt="Parent 2 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+            <img class="silver" *ngIf="parent1ImageUrl[8] != ''" [src]="parent1ImageUrl[8]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <h2>Male Parent</h2>
+        <app-cat-design (dropdownChange)="onDropdownChange($event, 'parent2')" (silverSliderChange)="onSilverSliderChange($event,'parent2')" (goldenSliderChange)="onGoldenSliderChange($event,'parent2')" (amberSliderChange)="onAmberSliderChange($event, 'parent2')" (rSliderChange)="onRSliderChange($event, 'parent2')"></app-cat-design>
+      </div>
+      <div class="col-9">
+
+        <div style="position: relative; width: 50%; height: auto;">
+          <img [src]="parent2ImageUrl[0]"
+               alt="Parent 1 Image"
+               style="width: 100%; height: auto; position: absolute;"
+               [ngClass]="{
+    darken: parent2Data['Tabby'] !== 'Tabby',
+    contrast: parent2Data['Tabby'] !== 'Tabby',
+    brown: parent2Data['Bases'] === 'Black'
+  }" />
+
+          <img *ngIf="parent2Data['Bases'] === 'Black' && parent2Data['Tabby'] == 'Tabby'"
+               [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Chocolate.png'"
+               alt="Parent 2 Image"
+               style="width: 100%; height: auto; position: absolute; mix-blend-mode: screen" />
+
+          <img *ngIf="parent2ImageUrl[7] != '' && parent2Data['Bases'] !== 'White' && parent2Data['Bases'] !== 'Red'&&  parent2Data['Bases'] !== 'Cream' && parent2Data['Bases'] !== 'Apricot'" [src]="parent2ImageUrl[7]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute;" [ngClass]="{'darken': parent2Data['Tabby'] !== 'Tabby'}" [style.opacity]="parent2AmberSliderValue + '%'" />
+          <img *ngIf="parent2Data['Bases'] !== 'White'"
+               [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'" alt="Parent 2 Image"
+               style="width: 100%; height: auto; position: absolute; filter:brightness(110%)"
+               [ngClass]="{ 'darken': parent2Data['Tabby'] !== 'Tabby' }"
+               [style.opacity]="parent2RSliderValue + '%'" />
+          <div *ngIf="parent2ImageUrl.length > 1">
+            <img *ngIf="parent2ImageUrl[2].includes('Overlays')" [src]="parent2ImageUrl[2] !== '' ? parent2ImageUrl[2] : parent2ImageUrl[0]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;"
+                 [style.opacity]="(parent2GoldenSliderValue - parent2SilverSliderValue) + '%'"
+                 [style.filter]="'saturate(' + (goldenSaturation2) + '%) '" />
+            <img class="silver"
+                 [src]="parent2ImageUrl[0]"
+                 [ngClass]="{
+       'ticked': parent2Data['Ticked'] === 'Ticked' && parent2Data['Tabby'] == 'Tabby',
+       'heteroTicked': parent2Data['Ticked'] === 'Heterozygous Ticked',
+       'spotted': parent2Data['Spotted'] === 'Spotted' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Ticked'] !== 'Ticked'&& parent2Data['Tabby'] == 'Tabby',
+       'Mackerel': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Spotted'] !== 'Spotted' && parent2Data['Tabby'] == 'Tabby',
+       'classic': parent2Data['Mackerel'] === 'Classic' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby',
+        'broken': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Spotted'] === 'Partial' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby'
+     }"
+                 [style.opacity]="brokenOpacity2" />
+            <img *ngIf="parent2ImageUrl[7] != '' && parent2Data['Bases'] !== 'White' && parent2Data['Bases'] !== 'Red'&&  parent2Data['Bases'] !== 'Cream' && parent2Data['Bases'] !== 'Apricot'" class="silver"
+                 [src]="parent2ImageUrl[0]"
+                 [ngClass]="{
+  'ticked': parent2Data['Ticked'] === 'Ticked' && parent2Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent2Data['Ticked'] === 'Heterozygous Ticked',
+  'spotted': parent2Data['Spotted'] === 'Spotted' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Ticked'] !== 'Ticked'&& parent2Data['Tabby'] == 'Tabby',
+  'Mackerel': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Spotted'] !== 'Spotted' && parent2Data['Tabby'] == 'Tabby',
+  'classic': parent2Data['Mackerel'] === 'Classic' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby',
+   'broken': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Spotted'] === 'Partial' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby'
+}"
+                 [style.opacity]="brokenOpacity2 * (parent2AmberSliderValue / 100)" />
+
+            <img class="silver" *ngIf="parent2ImageUrl[1].includes('Overlays')" [src]="parent2ImageUrl[1]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;"
+                 [style.opacity]="parent2SilverSliderValue + '%'"
+                 [style.--saturate-value.%]="saturateValue2"
+                 [style.--brightness-value.%]="brightnessValue2"
+                 [style.--contrast-value.%]="contrastValue2"
+                 [ngClass]="{'smoke': parent2Data['Tabby'] !== 'Tabby'}">
+            <img *ngIf="parent2ImageUrl[5].includes('Overlays')" [src]="parent2ImageUrl[5]" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal;" [style.opacity]="whiteUnderbelly2">
+            <img *ngIf="parent2Data['Tabby'] == 'Tabby'" [src]="parent2ImageUrl[0]" [ngClass]="{
+  'ticked': parent2Data['Ticked'] === 'Ticked'  && parent2Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent2Data['Ticked'] === 'Heterozygous Ticked'  && parent2Data['Tabby'] == 'Tabby',
+  'spotted': parent2Data['Spotted'] === 'Spotted' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Ticked'] !== 'Ticked'  && parent2Data['Tabby'] == 'Tabby',
+  'Mackerel': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Spotted'] !== 'Spotted'  && parent2Data['Tabby'] == 'Tabby',
+  'classic': parent2Data['Mackerel'] === 'Classic' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked'  && parent2Data['Tabby'] == 'Tabby',
+   'broken': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Spotted'] === 'Partial' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby'
+
+}" alt="Overlay Image"
+                 style="width: 100%; height: auto; position: absolute; top: 0; left: 0; mix-blend-mode: normal; filter:brightness(70%); mask-size: cover" [style.opacity]="tickedOpacity2">
+            <img *ngIf="parent2Data['Bases'] !== 'White' && (parent2Data['Bases'] === 'Red' || parent2Data['Bases'] === 'Cream' || parent2Data['Bases'] === 'Apricot')"
+                 [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'" alt="Parent 2 Image"
+                 style="width: 100%; height: auto; position: absolute; filter: brightness(90%)"
+                 [ngClass]="{
+  'ticked': parent2Data['Ticked'] === 'Ticked' && parent2Data['Tabby'] == 'Tabby',
+  'heteroTicked': parent2Data['Ticked'] === 'Heterozygous Ticked',
+  'spotted': parent2Data['Spotted'] === 'Spotted' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Tabby'] == 'Tabby',
+  'Mackerel': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Spotted'] !== 'Spotted' && parent2Data['Tabby'] == 'Tabby',
+  'classic': parent2Data['Mackerel'] === 'Classic' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby',
+  'broken': parent2Data['Mackerel'] === 'Mackerel' && parent2Data['Spotted'] === 'Partial' && parent2Data['Ticked'] !== 'Ticked' && parent2Data['Ticked'] !== 'Heterozygous Ticked' && parent2Data['Tabby'] == 'Tabby'
+
+}"
+                 [style.opacity]="parent2RSliderValue + '%'" />
+            <img class="silver" *ngIf="parent2ImageUrl[6] != ''" [src]="parent2ImageUrl[6]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+            <img class="silver" *ngIf="parent2Data['Bases'] === 'White'" [src]="parent2ImageUrl[0]" alt="Parent 2 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+            <img class="silver" *ngIf="parent2ImageUrl[8] != ''" [src]="parent2ImageUrl[8]" alt="Parent 1 Image" style="width: 100%; height: auto; position: absolute; top: 0; left: 0;" />
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

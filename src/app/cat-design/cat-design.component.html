@@ -1,0 +1,93 @@
+<form *ngIf="dropdownOptions.length > 0">
+  <label>{{dropdownOptions[0].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[0].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[0].name, $event)"
+          name="{{dropdownOptions[0].name}}">
+    <option *ngFor="let value of dropdownOptions[0].values" [value]="value">{{value}}</option>
+  </select>
+  <br />
+  <label>{{dropdownOptions[1].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[1].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[1].name, $event)"
+          name="{{dropdownOptions[1].name}}">
+    <option *ngFor="let value of dropdownOptions[1].values" [value]="value">{{value}}</option>
+  </select>
+  <br />
+  <label>{{dropdownOptions[3].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[3].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[3].name, $event)"
+          name="{{dropdownOptions[3].name}}">
+    <option *ngFor="let value of dropdownOptions[3].values" [value]="value">{{value}}</option>
+  </select>
+  <br />
+  <div *ngIf="selectedOptions[dropdownOptions[3].name] == 'Tabby'">
+    <label>{{dropdownOptions[2].label}}</label>
+    <select [(ngModel)]="selectedOptions[dropdownOptions[2].name]"
+            (ngModelChange)="onDropdownChange(dropdownOptions[2].name, $event)"
+            name="{{dropdownOptions[2].name}}">
+      <option *ngFor="let value of dropdownOptions[2].values" [value]="value">{{value}}</option>
+    </select>
+  </div>
+  <label>{{dropdownOptions[4].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[4].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[4].name, $event)"
+          name="{{dropdownOptions[4].name}}">
+    <option *ngFor="let value of dropdownOptions[4].values" [value]="value">{{value}}</option>
+  </select>
+  <label>{{dropdownOptions[5].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[5].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[5].name, $event)"
+          name="{{dropdownOptions[5].name}}">
+    <option *ngFor="let value of dropdownOptions[5].values" [value]="value">{{value}}</option>
+  </select>
+  <label>{{dropdownOptions[6].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[6].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[6].name, $event)"
+          name="{{dropdownOptions[6].name}}">
+    <option *ngFor="let value of dropdownOptions[6].values" [value]="value">{{value}}</option>
+  </select>
+  <div *ngIf="selectedOptions[dropdownOptions[0].name] !== 'White'">
+    <label>{{dropdownOptions[7].label}}</label>
+    <select [(ngModel)]="selectedOptions[dropdownOptions[7].name]"
+            (ngModelChange)="onDropdownChange(dropdownOptions[7].name, $event)"
+            name="{{dropdownOptions[7].name}}">
+      <option *ngFor="let value of dropdownOptions[7].values" [value]="value">{{value}}</option>
+    </select>
+  </div>
+  <label>{{dropdownOptions[8].label}}</label>
+  <select [(ngModel)]="selectedOptions[dropdownOptions[8].name]"
+          (ngModelChange)="onDropdownChange(dropdownOptions[8].name, $event)"
+          name="{{dropdownOptions[8].name}}">
+    <option *ngFor="let value of dropdownOptions[8].values" [value]="value">{{value}}</option>
+  </select>
+  <div style="padding: 10px;" *ngIf="selectedOptions['Silver'] == 'Silver'">
+    <div style="margin-top: 10px;">
+      <input type="range" min="0" max="100" step="1" [value]="silverSliderValue" (input)="onSilverSliderChange($event)" />
+
+    </div>
+    <p>Silver Opacity: {{ silverSliderValue }}</p>
+  </div>
+  <div style="padding: 10px;" *ngIf="selectedOptions['Golden'] == 'Golden' && selectedOptions[dropdownOptions[3].name] == 'Tabby'">
+    <div style="margin-top: 10px;">
+      <input type="range" min="0" max="100" step="1" [value]="goldenSliderValue" (input)="onGoldenSliderChange($event)" />
+
+    </div>
+    <p>Golden Opacity: {{ goldenSliderValue }}</p>
+  </div>
+
+  <div style="padding: 10px;" *ngIf="selectedOptions['Extension'] !== 'Normal'">
+    <div style="margin-top: 10px;">
+      <input type="range" min="0" max="100" step="1" [value]="amberSliderValue" (input)="onAmberSliderChange($event)" />
+    </div>
+    <p>
+      {{selectedOptions["Extension"]}} Opacity: {{amberSliderValue}}
+    </p>
+  </div>
+  <div style="padding: 10px;">
+    <div style="margin-top: 10px;">
+      <input type="range" min="0" max="100" step="1" [value]="rSliderValue" (input)="onRSliderChange($event)" />
+
+    </div>
+    <p>Rufousing Opacity: {{ rSliderValue }}</p>
+  </div>
+</form>

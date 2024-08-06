@@ -1,0 +1,85 @@
+<div class="kitten-grid" *ngIf="kittens.length > 0">
+  <div *ngFor="let kitten of kittens; let i = index" class="kitten-container">
+    <img class="kitten" [src]="kitten[0]" />
+    <img *ngIf="kitten[0].includes('Black') && kitten[6] != ''"
+         [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Chocolate.png'"
+         style="width: 100%; height: auto; position: absolute; mix-blend-mode: screen" />
+    <img *ngIf="kitten[11] !== '' && !kitten[0].includes('White') && !kitten[0].includes('Red') && !kitten[0].includes('Cream') && !kitten[0].includes('Apricot')" class="overlay"
+         [src]="kitten[11]"
+         [style.opacity]="kittenAmbers[i] + '%'" />
+    <img *ngIf="kitten[14] !== '' " class="overlay"
+         [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'"
+         [style.opacity]="kittenRs[i] + '%'" />
+    <img *ngIf="kitten[5] != ''" class="overlay Golden"
+         [src]="kitten[5]"
+         [style.opacity]="kittenGolds[i] / 100" />
+
+    <img *ngIf="kitten[3] != ''" class="overlay Silver"
+         [src]="kitten[3]"
+         [style.opacity]="kittenSilvers[i] / 100"
+         [ngClass]="{'smoke': kittenTabbies[i] == 'aa'}" />
+
+    <img *ngIf="kitten[5] != ''" class="overlay Golden"
+         [src]="kitten[5]"
+         [style.opacity]="kittenGolds[i] / 100" />
+    <img *ngIf="kittenTabbies[i] == 'aaT'" class="kitten"
+         [src]="kitten[0]"
+         [ngClass]="{
+  'broken': kitten[6].includes('Broken') && !kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+  'spotted': kitten[6].includes('Spotted'),
+  'ticked': kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+  'heteroTicked': kitten[6].includes('HeteroTicked'),
+  'Mackerel': kitten[6].includes('Mackerel') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked'),
+  'classic': kitten[6].includes('Classic') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked')
+}"
+         style="width: 100%; height: 100%; mask-position: 25%; filter: brightness(70%); mask-size: cover;" />
+    <img *ngIf=" kittenTabbies[i] == 'Aa'"
+         class="kitten"
+         [src]="(kitten[10] !== '' && !kitten[0].includes('White') && !kitten[0].includes('Red') && !kitten[0].includes('Cream') && !kitten[0].includes('Apricot')) ? kitten[10] : kitten[0]"
+         [ngClass]="{
+       'broken': kitten[6].includes('Broken') && !kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+       'spotted': kitten[6].includes('Spotted'),
+       'ticked': kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+       'heteroTicked': kitten[6].includes('HeteroTicked'),
+       'Mackerel': kitten[6].includes('Mackerel') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked'),
+       'classic': kitten[6].includes('Classic') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked')
+     }"
+         style="width: 100%; height: 100%; mask-position: 25%; filter: brightness(70%); mask-size: cover;" />
+
+
+    <img *ngIf="kitten[2] != ''" class="overlay"
+         [src]="kitten[2]"
+         [style.mask-image]="'url(https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Overlays/Tortie.png)'"
+         style="width: 100%; height: 100%; mask-position: 25%;mask-size: cover;" />
+
+    <img *ngIf="kitten[2] != '' && kittenTabbies[i] ==  'Aa'" class="overlay"
+         [src]="kitten[2]"
+         [ngClass]="{
+  'broken2': kitten[6].includes('Broken') && !kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+  'spotted2': kitten[6].includes('Spotted'),
+  'ticked2': kitten[6].includes('Ticked') && !kitten[6].includes('Hetero'),
+  'heteroTicked2': kitten[6].includes('HeteroTicked'),
+  'Mackerel2': kitten[6].includes('Mackerel') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked'),
+  'classic2': kitten[6].includes('Classic') && !kitten[6].includes('Broken') && !kitten[6].includes('Spotted') && !kitten[6].includes('Ticked') && !kitten[6].includes('Heterozygous Ticked')
+}"
+         style="width: 100%; height: 100%; mask-position: 25%; filter: brightness(90%); mask-size: cover; mask-composite: intersect" />
+
+
+    <img *ngIf="kittenTabbies[i] !== 'aa' && (kitten[0].includes('Red') || kitten[0].includes('Cream') || kitten[0].includes('Apricot'))" class="overlay"
+         [src]="'https://catbreedersim.8vsebhnlikoo8.us-east-1.cs.amazonlightsail.com/Markings/Bases/Red.png'"
+         [style.opacity]="kittenRs[i] + '%'" />
+    <img *ngIf="kitten[8] != ''" class="overlay Golden"
+         [src]="kitten[8]"
+         [style.opacity]="whiteUnderbelly(i)" />
+    <img *ngIf="kitten[10] != ''" class="overlay"
+         [src]="kitten[10]"
+         [style.opacity]="1" />
+    <img *ngIf="kitten.length > 12" class="overlay"
+         [src]="kitten[15]"
+         [style.opacity]="1" />
+
+    <p class="text">
+      {{ getFileName(kitten[0]) + (getFileName(kitten[2]) ? " + " + getFileName(kitten[2]) : getFileName(kitten[2])) + " " + kittenGenders[i] }}
+    </p>
+  </div>
+</div>
